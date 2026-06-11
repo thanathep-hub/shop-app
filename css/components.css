@@ -110,6 +110,7 @@
 }
 
 /* ============ Cart bar ============ */
+body[data-page="pos"] main { padding-bottom: 88px; } /* เผื่อที่ให้ cart-bar ไม่บังเมนูแถวล่าง */
 .cart-bar {
   position: fixed; left: 12px; right: 12px;
   bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 10px);
@@ -117,9 +118,11 @@
   background: var(--black); color: #fff; border-radius: 18px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 13px 16px; box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  transform: translateY(140%); transition: transform .25s cubic-bezier(.32,.72,.33,1);
+  transform: translateY(calc(100% + var(--nav-h) + env(safe-area-inset-bottom, 0px) + 20px));
+  opacity: 0; pointer-events: none;
+  transition: transform .25s cubic-bezier(.32,.72,.33,1), opacity .2s;
 }
-.cart-bar.show { transform: translateY(0); }
+.cart-bar.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .cart-bar .total { font-weight: 800; font-size: 17px; color: var(--orange); }
 .cart-bar:active { opacity: .9; }
 
