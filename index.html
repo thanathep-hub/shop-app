@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF620E">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ร้านค้า">
+  <title>ขาย · ร้านของฉัน</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+<body data-page="pos">
+
+  <header class="app-header">
+    <div class="container">
+      <div>
+        <div class="sub" id="shopName">ร้านของฉัน</div>
+        <h1>ขาย</h1>
+      </div>
+      <div class="small muted bold" id="todayTotal"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="posGrid"></div>
+  </main>
+
+  <!-- แถบตะกร้า -->
+  <button class="cart-bar" id="cartBar">
+    <span><span id="cartCount">0</span> รายการ — แตะเพื่อดูตะกร้า</span>
+    <span class="total" id="cartTotal">0 ฿</span>
+  </button>
+
+  <!-- Sheet: ตะกร้า -->
+  <div class="modal-backdrop" id="cartSheetBackdrop"></div>
+  <div class="sheet" id="cartSheet">
+    <div class="grabber"></div>
+    <h2>ตะกร้า</h2>
+    <div id="cartLines"></div>
+    <div class="cost-box mt-16">
+      <div class="spread"><span class="bold">รวมทั้งหมด</span><span class="bold orange" style="font-size:20px" id="sheetTotal">0 ฿</span></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="btnConfirm">ยืนยันการขาย</button>
+    <button class="btn btn-secondary btn-block mt-8" id="btnClear">ล้างตะกร้า</button>
+  </div>
+
+  <script src="./js/store.js"></script>
+  <script src="./js/calc.js"></script>
+  <script src="./js/nav.js"></script>
+  <script src="./js/pos.js"></script>
+  <script src="./js/pwa.js"></script>
+</body>
+</html>

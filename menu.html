@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF620E">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ร้านค้า">
+  <title>เมนู · ร้านของฉัน</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+<body data-page="menu">
+
+  <header class="app-header">
+    <div class="container">
+      <div>
+        <div class="sub">เมนูและสูตร</div>
+        <h1>เมนู</h1>
+      </div>
+      <button class="add-btn" id="btnAdd" aria-label="เพิ่มเมนู">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="menuList"></div>
+  </main>
+
+  <!-- Sheet: เพิ่ม/แก้ไขเมนู -->
+  <div class="modal-backdrop" id="menuSheetBackdrop"></div>
+  <div class="sheet" id="menuSheet">
+    <div class="grabber"></div>
+    <h2 id="menuSheetTitle">เพิ่มเมนู</h2>
+
+    <div class="field">
+      <label>ชื่อเมนู</label>
+      <input type="text" id="mName" placeholder="เช่น ชาไทยเย็น">
+    </div>
+    <div class="field">
+      <label>ราคาขาย (บาท)</label>
+      <input type="number" id="mPrice" inputmode="decimal" placeholder="35">
+    </div>
+
+    <div class="field">
+      <label>วิธีคิดต้นทุน</label>
+      <div class="seg" id="modeSeg">
+        <button data-mode="recipe" class="active">ผูกสูตรวัตถุดิบ</button>
+        <button data-mode="manual">กรอกต้นทุนเอง</button>
+      </div>
+    </div>
+
+    <!-- โหมดผูกสูตร -->
+    <div id="recipeBlock">
+      <label class="small bold" style="color:var(--gray-700)">สูตรต่อ 1 หน่วยขาย</label>
+      <div id="recipeRows" class="mt-8"></div>
+      <div class="row mt-8">
+        <button class="btn btn-secondary btn-sm" id="btnAddRow">+ เพิ่มวัตถุดิบในสูตร</button>
+        <button class="btn btn-secondary btn-sm orange" id="btnNewIng">+ สร้างวัตถุดิบใหม่</button>
+      </div>
+    </div>
+
+    <!-- โหมดกรอกเอง -->
+    <div id="manualBlock" style="display:none">
+      <div class="field">
+        <label>ต้นทุนประมาณต่อหน่วย (บาท)</label>
+        <input type="number" id="mManualCost" inputmode="decimal" placeholder="12">
+        <p class="hint">โหมดนี้ระบบจะบันทึกกำไรแบบประมาณการ และจะไม่ตัดสต็อกวัตถุดิบ</p>
+      </div>
+    </div>
+
+    <div class="cost-box">
+      <div class="spread"><span>ต้นทุน</span><span class="bold" id="pvCost">0 ฿</span></div>
+      <div class="spread"><span>กำไรต่อหน่วย</span><span class="bold orange" id="pvProfit">0 ฿</span></div>
+      <div class="spread"><span>Margin</span><span class="bold" id="pvMargin">0%</span></div>
+    </div>
+
+    <button class="btn btn-primary btn-block" id="btnSave">บันทึกเมนู</button>
+    <button class="btn btn-danger btn-block mt-8" id="btnDelete" style="display:none">ลบเมนูนี้</button>
+    <button class="btn btn-secondary btn-block mt-8" id="btnCancel">ยกเลิก</button>
+  </div>
+
+  <!-- Sheet: สร้างวัตถุดิบใหม่จากหน้าเมนู -->
+  <div class="modal-backdrop" id="quickIngBackdrop"></div>
+  <div class="sheet" id="quickIng" style="z-index:120">
+    <div class="grabber"></div>
+    <h2>วัตถุดิบใหม่</h2>
+    <div class="field"><label>ชื่อวัตถุดิบ</label><input type="text" id="qName" placeholder="เช่น ไข่มุก"></div>
+    <div class="field"><label>หน่วยนับ</label><input type="text" id="qUnit" placeholder="เช่น g, ml, ชิ้น"></div>
+    <div class="field-row">
+      <div class="field"><label>ซื้อมาจำนวน</label><input type="number" id="qQty" inputmode="decimal" placeholder="1000"></div>
+      <div class="field"><label>ราคาที่ซื้อ (บาท)</label><input type="number" id="qPrice" inputmode="decimal" placeholder="80"></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="btnQuickSave">เพิ่มและใช้ในสูตรเลย</button>
+    <button class="btn btn-secondary btn-block mt-8" id="btnQuickCancel">ยกเลิก</button>
+  </div>
+
+  <script src="./js/store.js"></script>
+  <script src="./js/calc.js"></script>
+  <script src="./js/nav.js"></script>
+  <script src="./js/menu.js"></script>
+  <script src="./js/pwa.js"></script>
+</body>
+</html>

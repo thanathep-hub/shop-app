@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF620E">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ร้านค้า">
+  <title>ตั้งค่า · ร้านของฉัน</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+<body data-page="set">
+
+  <header class="app-header">
+    <div class="container">
+      <div>
+        <div class="sub">จัดการแอพ</div>
+        <h1>ตั้งค่า</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="field">
+      <label>ชื่อร้าน</label>
+      <input type="text" id="fShopName" placeholder="เช่น ชาไทยป้าแดง">
+    </div>
+    <button class="btn btn-secondary btn-block" id="btnSaveName">บันทึกชื่อร้าน</button>
+
+    <div class="section-title">สำรองข้อมูล (Backup)</div>
+    <div class="card">
+      <div id="backupStatus" style="margin-bottom:8px"></div>
+      <p class="small muted">ข้อมูลทั้งหมดเก็บอยู่ในเครื่องนี้เท่านั้น แนะนำให้ Export เก็บไว้ทุกสิ้นวัน เผื่อเปลี่ยนเครื่องหรือข้อมูลหาย</p>
+      <button class="btn btn-primary btn-block mt-16" id="btnExport">⬇ Export ข้อมูล (JSON)</button>
+      <button class="btn btn-secondary btn-block mt-8" id="btnImport">⬆ Import ข้อมูลจากไฟล์</button>
+      <input type="file" id="fileInput" accept="application/json,.json" style="display:none">
+    </div>
+
+    <div class="section-title">ข้อมูลในเครื่อง</div>
+    <div class="list" id="dataInfo"></div>
+
+    <div class="section-title" style="color:var(--red)">โซนอันตราย</div>
+    <button class="btn btn-danger btn-block" id="btnClearAll">ล้างข้อมูลทั้งหมด</button>
+    <p class="small muted mt-8" style="text-align:center">แอพเวอร์ชัน Phase 1 · เก็บข้อมูลด้วย localStorage</p>
+  </main>
+
+  <script src="./js/store.js"></script>
+  <script src="./js/calc.js"></script>
+  <script src="./js/nav.js"></script>
+  <script src="./js/settings.js"></script>
+  <script src="./js/pwa.js"></script>
+</body>
+</html>

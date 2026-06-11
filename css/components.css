@@ -1,0 +1,164 @@
+/* ============ Buttons ============ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  border-radius: var(--radius); font-weight: 700; font-size: 16px;
+  padding: 13px 18px; transition: transform .08s ease, opacity .12s;
+  user-select: none; -webkit-user-select: none;
+}
+.btn:active { transform: scale(.97); opacity: .85; }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-secondary { background: var(--gray-100); color: var(--black); }
+.btn-danger { background: #FDECEC; color: var(--red); }
+.btn-block { width: 100%; }
+.btn-sm { padding: 8px 12px; font-size: 14px; border-radius: 10px; }
+.btn[disabled] { opacity: .4; pointer-events: none; }
+
+/* ============ Cards & Lists ============ */
+.card {
+  background: var(--white); border: 0.5px solid var(--gray-300);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  padding: 16px;
+}
+.list { background: var(--white); border: 0.5px solid var(--gray-300); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+.list-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 13px 16px; border-bottom: 0.5px solid var(--gray-100);
+}
+.list-item:last-child { border-bottom: none; }
+.list-item:active { background: var(--gray-100); }
+.list-item .title { font-weight: 600; }
+.list-item .meta { font-size: 13px; color: var(--gray-500); margin-top: 1px; }
+
+/* ============ Stat cards (summary) ============ */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat-card { border: 0.5px solid var(--gray-300); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow); }
+.stat-card .label { font-size: 12.5px; font-weight: 600; color: var(--gray-500); }
+.stat-card .value { font-size: 24px; font-weight: 800; margin-top: 2px; letter-spacing: -0.4px; }
+.stat-card.hero { grid-column: 1 / -1; background: var(--black); color: #fff; border: none; }
+.stat-card.hero .label { color: rgba(255,255,255,.65); }
+.stat-card.hero .value { color: var(--orange); font-size: 34px; }
+
+/* ============ Segmented control ============ */
+.seg { display: flex; background: var(--gray-100); border-radius: 12px; padding: 3px; gap: 2px; }
+.seg button {
+  flex: 1; padding: 8px 4px; border-radius: 9px; font-size: 13.5px; font-weight: 600;
+  color: var(--gray-700);
+}
+.seg button.active { background: #fff; color: var(--black); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+
+/* ============ Forms ============ */
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 5px; }
+.field input, .field select {
+  width: 100%; padding: 12px 13px; border-radius: 12px;
+  border: 1px solid var(--gray-300); background: var(--white);
+  font-size: 16px; outline: none;
+}
+.field input:focus, .field select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px var(--orange-soft); }
+.field .hint { font-size: 12.5px; color: var(--gray-500); margin-top: 4px; }
+.field-row { display: flex; gap: 10px; }
+.field-row .field { flex: 1; }
+
+/* ============ Modal (iOS bottom sheet) ============ */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 90;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: auto; }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+  background: var(--white); border-radius: 22px 22px 0 0;
+  max-width: 600px; margin: 0 auto;
+  max-height: 88vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 10px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(105%); transition: transform .25s cubic-bezier(.32,.72,.33,1);
+}
+.sheet.open { transform: translateY(0); }
+.sheet .grabber { width: 38px; height: 5px; border-radius: 3px; background: var(--gray-300); margin: 4px auto 14px; }
+.sheet h2 { font-size: 20px; font-weight: 800; margin-bottom: 16px; }
+
+/* ============ Recipe rows ============ */
+.recipe-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.recipe-row select { flex: 1.6; min-width: 0; }
+.recipe-row input { flex: 1; min-width: 0; }
+.recipe-row select, .recipe-row input { padding: 10px 10px; border-radius: 10px; border: 1px solid var(--gray-300); font-size: 15px; }
+.recipe-row .unit { font-size: 13px; color: var(--gray-500); min-width: 28px; }
+.recipe-row .rm { color: var(--red); font-size: 20px; padding: 4px 6px; line-height: 1; }
+
+/* ============ Cost preview box ============ */
+.cost-box { background: var(--orange-soft); border-radius: var(--radius); padding: 12px 14px; margin: 14px 0; }
+.cost-box .spread { font-size: 14.5px; padding: 2px 0; }
+
+/* ============ POS grid ============ */
+.pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.pos-tile {
+  position: relative; text-align: left;
+  border: 0.5px solid var(--gray-300); border-radius: var(--radius-lg);
+  padding: 14px; min-height: 96px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform .08s;
+}
+.pos-tile:active { transform: scale(.96); }
+.pos-tile .name { font-weight: 700; font-size: 15.5px; line-height: 1.3; }
+.pos-tile .price { color: var(--orange); font-weight: 800; font-size: 17px; margin-top: 8px; }
+.pos-tile .qty-badge {
+  position: absolute; top: -7px; right: -7px;
+  min-width: 26px; height: 26px; border-radius: 13px;
+  background: var(--orange); color: #fff; font-weight: 800; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; padding: 0 7px;
+  box-shadow: 0 2px 6px rgba(255,98,14,.45);
+}
+
+/* ============ Cart bar ============ */
+.cart-bar {
+  position: fixed; left: 12px; right: 12px;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 10px);
+  z-index: 60; max-width: 576px; margin: 0 auto;
+  background: var(--black); color: #fff; border-radius: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 16px; box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transform: translateY(140%); transition: transform .25s cubic-bezier(.32,.72,.33,1);
+}
+.cart-bar.show { transform: translateY(0); }
+.cart-bar .total { font-weight: 800; font-size: 17px; color: var(--orange); }
+.cart-bar:active { opacity: .9; }
+
+.cart-line { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 0.5px solid var(--gray-100); gap: 8px; }
+.cart-line:last-child { border-bottom: none; }
+.qty-ctrl { display: flex; align-items: center; gap: 12px; }
+.qty-ctrl button {
+  width: 30px; height: 30px; border-radius: 15px; background: var(--gray-100);
+  font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
+.qty-ctrl .q { min-width: 20px; text-align: center; font-weight: 700; }
+
+/* ============ Badge / chip ============ */
+.badge { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2.5px 8px; border-radius: 8px; }
+.badge.warn { background: #FFF6D6; color: #9A7B00; }
+.badge.low { background: #FDECEC; color: var(--red); }
+.badge.ok { background: #E8F7EC; color: var(--green); }
+
+/* ============ Toast ============ */
+.toast {
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px);
+  left: 50%; transform: translate(-50%, -150%);
+  background: var(--black); color: #fff; font-size: 14.5px; font-weight: 600;
+  padding: 11px 18px; border-radius: 14px; z-index: 200;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3); transition: transform .25s;
+  max-width: 90vw; text-align: center;
+}
+.toast.show { transform: translate(-50%, 0); }
+.toast.warn { background: var(--red); }
+
+/* ============ Empty state ============ */
+.empty { text-align: center; padding: 48px 20px; color: var(--gray-500); }
+.empty .ic { font-size: 40px; margin-bottom: 10px; }
+.empty p { font-size: 14.5px; }
+
+/* ============ FAB (add button in header) ============ */
+.add-btn {
+  width: 36px; height: 36px; border-radius: 18px; background: var(--orange); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.add-btn svg { width: 20px; height: 20px; }
+.add-btn:active { transform: scale(.92); }
