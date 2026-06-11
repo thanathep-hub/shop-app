@@ -1,7 +1,7 @@
 /* ================= Service Worker =================
    อัพเดทแอพเมื่อไหร่ ให้เปลี่ยนเลข CACHE_VERSION ทุกครั้ง
    เพื่อบังคับให้เครื่องลูกค้าโหลดไฟล์ใหม่ */
-const CACHE_VERSION = 'shop-app-v2';
+const CACHE_VERSION = 'shop-app-v3';
 
 const PRECACHE = [
   './',
